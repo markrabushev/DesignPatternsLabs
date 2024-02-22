@@ -21,7 +21,7 @@ public:
 			else
 				break;
 		}
-		
+
 		return board;
 	}
 
