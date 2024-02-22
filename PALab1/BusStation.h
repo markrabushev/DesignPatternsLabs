@@ -1,14 +1,27 @@
 #pragma once
-#include "Factory.h"
+#include <vector>
+#include "Board.h"
+#include "Driver.h"
+
 class BusStation
 {
 public:
-	BoardAnyCar* createBoard(AbstractFactory& factory)
+	std::vector<Passenger*> passengers;
+	std::vector<Driver*> drivers;
+
+	~BusStation()
 	{
-		BoardAnyCar* Board = factory.createBoard();
-		Board->BoardDriver(factory.createDriver());
-		for (size_t i = 0; i < Board->maxPassengers; i++)
-			Board->BoardPassenger(factory.createPassenger());
-		return Board;
+		int i;
+		for (i = 0; i < passengers.size(); ++i) delete passengers[i];
+		for (i = 0; i < drivers.size(); ++i) delete drivers[i];
+	}
+
+	int passengersCount()
+	{
+		return passengers.size();
+	}
+	int driversCount()
+	{
+		return drivers.size();
 	}
 };

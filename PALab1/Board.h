@@ -1,46 +1,24 @@
 #pragma once
-#include <vector>
+
 #include "Driver.h"
 
-class BoardException {};
-class NullException {};
 
 class BoardAnyCar
 {
+public:
+	BoardAnyCar() {};
+	virtual ~BoardAnyCar() {};
+
+	virtual Driver* BoardDriver() = 0;
+
+	Passenger* BoardPassenger()
+	{
+		return new Passenger();
+	}
+
 protected:
 	Driver* driver = nullptr;
-	std::vector<Passenger*> passengers;
-public:
-	unsigned maxPassengers = 0;
-	~BoardAnyCar()
-	{
-		if (driver)
-			delete driver;
-		for (auto p : passengers)
-			delete p;
-	}
-	bool isReady()
-	{
-		if (driver == nullptr)
-			return false;
-		if (passengers.size() < 1)
-			return false;
-		return true;
-	}
-	void BoardPassenger(Passenger* p)
-	{
-		if (passengers.size() == maxPassengers)
-			throw BoardException();
-		else
-			passengers.push_back(p);
-	}
-	void BoardDriver(Driver* d)
-	{
-		if (d)
-			driver = d;
-		else
-			throw NullException();
-	}
+
 };
 
 class BoardTaxi : public BoardAnyCar
@@ -48,9 +26,13 @@ class BoardTaxi : public BoardAnyCar
 public:
 	BoardTaxi()
 	{
-		maxPassengers = 4;
 		std::cout << "BoardTaxi is created\n";
 	}
+	Driver* BoardDriver()
+	{
+		return new TaxiDriver();
+	}
+
 	~BoardTaxi() {};
 };
 
@@ -59,8 +41,11 @@ class BoardBus : public BoardAnyCar
 public:
 	BoardBus()
 	{
-		maxPassengers = 30;
 		std::cout << "BoardBus is created\n";
+	}
+	Driver* BoardDriver()
+	{
+		return new BusDriver();
 	}
 	~BoardBus() {};
 };

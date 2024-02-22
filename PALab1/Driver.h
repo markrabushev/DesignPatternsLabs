@@ -2,19 +2,14 @@
 
 #include <iostream>
 
-class Passenger
-{
-public:
-	Passenger() { std::cout << "Passenger is created\n"; };
-};
-
-enum Licenze { BCategory, DCategory };
+enum class Licenze { BCategory, DCategory };
 
 class Driver
 {
 public:
 	Licenze licenze;
-	Driver() {};
+	virtual void info() = 0;
+	virtual ~Driver() {};
 };
 
 class TaxiDriver : public Driver
@@ -22,16 +17,30 @@ class TaxiDriver : public Driver
 public:
 	TaxiDriver()
 	{
-		std::cout << "TaxiDriver is created\n";
-		licenze = BCategory;
+		licenze = Licenze::BCategory;
+	}
+	void info() {
+		std::cout << "TaxiDriver" << std::endl;
 	}
 };
+
 class BusDriver : public Driver
 {
 public:
 	BusDriver()
 	{
-		std::cout << "BusDriver is created\n";
-		licenze = DCategory;
+		licenze = Licenze::DCategory;
+	}
+	void info() {
+		std::cout << "BusDriver" << std::endl;
+	}
+};
+
+class Passenger
+{
+public:
+	Passenger() {};
+	void info() {
+		std::cout << "Passenger" << std::endl;
 	}
 };
