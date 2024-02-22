@@ -18,7 +18,7 @@ public:
 		license = License::BCategory;
 	}
 	void info() const {
-		std::cout << "TaxiDriver" << std::endl;
+		std::cout << "TaxiDriver";
 	}
 };
 
@@ -30,7 +30,7 @@ public:
 		license = License::DCategory;
 	}
 	void info() const {
-		std::cout << "BusDriver" << std::endl;
+		std::cout << "BusDriver";
 	}
 };
 

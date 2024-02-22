@@ -40,6 +40,17 @@ public:
 	{
 		return maxPassengers;
 	}
+	Driver* GetDriver()
+	{
+		if (driver)
+			return driver;
+		else
+			throw "NullPointer";
+	}
+	unsigned GetCurrentPassengers()
+	{
+		return passengers.size();
+	}
 
 protected:
 	Driver* driver = nullptr;
