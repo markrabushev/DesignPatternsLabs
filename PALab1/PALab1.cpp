@@ -1,19 +1,22 @@
-﻿#include "BusStation.h"
+﻿#include "TransportManager.h"
 #include <vector>
 #include <iostream>
 #include <string>
 
 int main()
 {
-	auto BS = new BusStation();
+	auto TM = new TransportManager(200, 5, 8);
 	auto BF = BusFactory();
 	auto TF = TaxiFactory();
-	BoardAnyCar* BBus = BS->createBoard(BF);
-	BoardAnyCar* BTaxi = BS->createBoard(TF);
+	BoardAnyCar* BBus = TM->loadAndDrive(BF);
+	BoardAnyCar* BTaxi = TM->loadAndDrive(TF);
 	std::cout << BBus->isReady() << std::endl;
 	std::cout << BTaxi->isReady() << std::endl;
+	std::cout << TM->GetNumberOfPassengers() << std::endl;
+	TM->loadAndDrive(BF);
+	std::cout << TM->GetNumberOfPassengers() << std::endl;
 	system("pause");
-	delete BS;
+	delete TM;
 	delete BBus;
 	delete BTaxi;
 	return 0;
