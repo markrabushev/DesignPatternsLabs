@@ -1,43 +1,16 @@
-﻿#include "TransportManager.h"
+﻿#include "Director.h"
 #include <vector>
 #include <iostream>
 #include <string>
 
 int main()
 {
-	auto TM = new TransportManager(50);
-	auto BF = BusFactory();
-	auto TF = TaxiFactory();
-	std::cout << "Number of passengers: " << TM->GetNumberOfPassengers() << std::endl;
-	BoardAnyCar* BBus = TM->loadAndDrive(BF);
-	BoardAnyCar* BTaxi = TM->loadAndDrive(TF);
-	if (BBus->isReady())
-	{
-		BBus->GetDriver()->info();
-		std::cout << " left with " << BBus->GetCurrentPassengers() << " passengers" << std::endl;
-	}
-	if (BTaxi->isReady())
-	{
-		BTaxi->GetDriver()->info();
-		std::cout << " left with " << BTaxi->GetCurrentPassengers() << " passengers" << std::endl;
-	}
-	std::cout << "Number of passengers: " << TM->GetNumberOfPassengers() << std::endl;
-	BBus = TM->loadAndDrive(BF);
-	if (BBus->isReady())
-	{
-		BBus->GetDriver()->info();
-		std::cout << " left with " << BBus->GetCurrentPassengers() << " passengers" << std::endl;
-	}
-	std::cout << "Number of passengers: " << TM->GetNumberOfPassengers() << std::endl;
-	BTaxi = TM->loadAndDrive(TF);
-	if (BTaxi->isReady())
-	{
-		BTaxi->GetDriver()->info();
-		std::cout << " left with " << BTaxi->GetCurrentPassengers() << " passengers" << std::endl;
-	}
+	Director dir;
+	BusBuilder bus_builder;
+	TaxiBuilder taxi_builder;
+	BoardAnyCar* BB = dir.createBoard(bus_builder, 5, 3, 2);
+	std::cout << std::endl;
+	BoardAnyCar* BT = dir.createBoard(taxi_builder, 2, 1);
 
-	delete TM;
-	delete BBus;
-	delete BTaxi;
 	return 0;
 }

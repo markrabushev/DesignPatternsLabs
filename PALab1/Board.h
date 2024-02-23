@@ -51,11 +51,20 @@ public:
 	{
 		return passengers.size();
 	}
+	unsigned GetChildSafetySeat()
+	{
+		return childSafetySeat;
+	}
+	void IncreaseChildSafetySeats()
+	{
+		childSafetySeat++;
+	}
 
 protected:
 	Driver* driver = nullptr;
 	std::vector<Passenger*> passengers;
 	unsigned maxPassengers = 0;
+	unsigned childSafetySeat = 0;
 };
 
 class BoardTaxi : public BoardAnyCar
@@ -68,6 +77,14 @@ public:
 	}
 
 	~BoardTaxi() {};
+	unsigned GetChildSafetySeat()
+	{
+		return childSafetySeat;
+	}
+	void IncreaseChildSafetySeats()
+	{
+		childSafetySeat++;
+	}
 };
 
 class BoardBus : public BoardAnyCar

@@ -29,10 +29,13 @@
     <ClInclude Include="Passenger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Factory.h">
+    <ClInclude Include="TransportManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransportManager.h">
+    <ClInclude Include="Builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Director.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

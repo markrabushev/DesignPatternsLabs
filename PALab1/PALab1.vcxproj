@@ -131,8 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Builder.h" />
+    <ClInclude Include="Director.h" />
     <ClInclude Include="Driver.h" />
-    <ClInclude Include="Factory.h" />
     <ClInclude Include="Passenger.h" />
     <ClInclude Include="TransportManager.h" />
   </ItemGroup>
