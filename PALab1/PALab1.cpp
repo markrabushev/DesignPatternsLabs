@@ -8,9 +8,25 @@ int main()
 	Director dir;
 	BusBuilder bus_builder;
 	TaxiBuilder taxi_builder;
-	BoardAnyCar* BB = dir.createBoard(bus_builder, 5, 3, 2);
+	try 
+	{
+		Car* Bus = dir.createBoard(bus_builder, 5, 3, 0, 6);
+		Bus->info();
+	}
+	catch (const char* error_message)
+	{
+		std::cout << error_message << std::endl;
+	}
 	std::cout << std::endl;
-	BoardAnyCar* BT = dir.createBoard(taxi_builder, 2, 1);
+	try 
+	{
+		Car* Taxi = dir.createBoard(taxi_builder, 2, 1, 1);
+		Taxi->info();
+	}
+	catch (const char* error_message)
+	{
+		std::cout << error_message << std::endl;
+	}
 
 	return 0;
 }

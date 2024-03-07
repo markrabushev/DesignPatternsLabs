@@ -6,11 +6,7 @@
 class Car
 {
 public:
-	Car(unsigned p_maxPassengers, unsigned p_childSafetySeats = 0)
-	{
-		maxPassengers = p_maxPassengers;
-		childSafetySeats = p_childSafetySeats;
-	}
+	Car(unsigned p_maxPassengers) : maxPassengers(p_maxPassengers) {}
 	~Car()
 	{
 		if (driver)
@@ -68,6 +64,15 @@ public:
 	void DecreaseChildSafetySeats()
 	{
 		if (childSafetySeats) childSafetySeats--;
+	}
+	void info()
+	{
+		driver->info();
+		std::cout << " with " << passengers.size() << " passengers:" << std::endl;
+		for (auto& p : passengers)
+		{
+			p->info();
+		}
 	}
 
 protected:

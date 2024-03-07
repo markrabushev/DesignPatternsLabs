@@ -9,7 +9,7 @@ protected:
 	Car* car;
 public:
 	CarBuilder() : car(nullptr) {}
-	virtual void createCar() {};
+	virtual void createCar() = 0;
 	virtual void buildAdult() {};
 	virtual void buildPreferential() {};
 	virtual void buildChild() {};
@@ -21,7 +21,7 @@ public:
 class TaxiBuilder : public CarBuilder
 {
 public:
-	void createCar() { car = new Car(4, 1); }
+	void createCar() { car = new Car(4); }
 	void buildDriver() { car->BoardDriver(new TaxiDriver()); }
 	void buildAdult() { car->BoardPassenger(new AdultPassenger()); }
 	void buildChild() { 
@@ -29,6 +29,10 @@ public:
 		{
 			car->BoardPassenger(new ChildPassenger());
 			car->DecreaseChildSafetySeats();
+		}
+		else
+		{
+			throw "There are not enough child safety seats";
 		}
 	}
 	void buildSafetySeat() { car->IncreaseChildSafetySeats(); }

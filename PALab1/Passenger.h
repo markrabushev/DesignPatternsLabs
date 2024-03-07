@@ -5,9 +5,7 @@ class Passenger
 {
 public:
 	Passenger() {};
-	void info() const {
-		std::cout << "Passenger" << std::endl;
-	}
+	virtual void info() const {};
 };
 
 class AdultPassenger : public Passenger
