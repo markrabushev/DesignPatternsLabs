@@ -3,19 +3,25 @@
 
 class Director
 {
+private:
+	CarBuilder* builder = nullptr;
 public:
-	Car* createBoard(CarBuilder& builder, size_t AdultNum = 1, size_t ChildNum = 1, unsigned safetySeats = 0, size_t PreferentialNum = 0)
+	void SetBuilder(CarBuilder& p_builder)
 	{
-		builder.createCar();
-		builder.buildDriver();
+		builder = &p_builder;
+	}
+	Car* CreateBoard(size_t AdultNum = 1, size_t ChildNum = 1, unsigned safetySeats = 0, size_t PreferentialNum = 0)
+	{
+		builder->createCar();
+		builder->buildDriver();
 		for (int i = 0; i < safetySeats; i++)
-			builder.buildSafetySeat();
+			builder->buildSafetySeat();
 		for (size_t i = 0; i < AdultNum; i++)
-			builder.buildAdult();
+			builder->buildAdult();
 		for (size_t i = 0; i < ChildNum; i++)
-			builder.buildChild();
+			builder->buildChild();
 		for (size_t i = 0; i < PreferentialNum; i++)
-			builder.buildPreferential();
-		return builder.getCar();
+			builder->buildPreferential();
+		return builder->getCar();
 	}
 };

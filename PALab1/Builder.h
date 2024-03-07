@@ -9,6 +9,7 @@ protected:
 	Car* car;
 public:
 	CarBuilder() : car(nullptr) {}
+	virtual ~CarBuilder() {};
 	virtual void createCar() = 0;
 	virtual void buildAdult() {};
 	virtual void buildPreferential() {};
@@ -37,6 +38,10 @@ public:
 	}
 	void buildSafetySeat() { car->IncreaseChildSafetySeats(); }
 	void buildPreferential() {};
+	~TaxiBuilder()
+	{
+		delete car;
+	}
 };
 
 class BusBuilder : public CarBuilder
@@ -47,4 +52,8 @@ public:
 	void buildAdult() { car->BoardPassenger(new AdultPassenger()); }
 	void buildChild() { car->BoardPassenger(new ChildPassenger()); }
 	void buildPreferential() { car->BoardPassenger(new PreferentialPassenger()); }
+	~BusBuilder()
+	{
+		delete car;
+	}
 };

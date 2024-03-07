@@ -38,7 +38,7 @@ public:
 		else
 			passengers.push_back(p);
 	}
-	unsigned GetMaxPassengers() const
+	/*unsigned GetMaxPassengers() const
 	{
 		return maxPassengers;
 	}
@@ -48,11 +48,11 @@ public:
 			return driver;
 		else
 			throw "NullPointer";
-	}
-	unsigned GetCurrentNumberOfPassengers()
+	}*/
+	/*unsigned GetCurrentNumberOfPassengers()
 	{
 		return passengers.size();
-	}
+	}*/
 	unsigned GetNumberOfChildSafetySeats()
 	{
 		return childSafetySeats;
