@@ -3,11 +3,15 @@
 #include "Passenger.h"
 #include <vector>
 
-class BoardAnyCar
+class Car
 {
 public:
-
-	~BoardAnyCar()
+	Car(unsigned p_maxPassengers, unsigned p_childSafetySeats = 0)
+	{
+		maxPassengers = p_maxPassengers;
+		childSafetySeats = p_childSafetySeats;
+	}
+	~Car()
 	{
 		if (driver)
 			delete driver;
@@ -24,10 +28,12 @@ public:
 	}
 	void BoardDriver(Driver* d)
 	{
-		if (d)
-			driver = d;
-		else
+		if (d == nullptr)
 			throw "NullPointer";
+		else if (driver != nullptr)
+			throw "There is already a driver in the car";
+		else
+			driver = d;
 	}
 	void BoardPassenger(Passenger* p)
 	{
@@ -47,54 +53,51 @@ public:
 		else
 			throw "NullPointer";
 	}
-	unsigned GetCurrentPassengers()
+	unsigned GetCurrentNumberOfPassengers()
 	{
 		return passengers.size();
 	}
-	unsigned GetChildSafetySeat()
+	unsigned GetNumberOfChildSafetySeats()
 	{
-		return childSafetySeat;
+		return childSafetySeats;
 	}
 	void IncreaseChildSafetySeats()
 	{
-		childSafetySeat++;
+		childSafetySeats++;
+	}
+	void DecreaseChildSafetySeats()
+	{
+		if (childSafetySeats) childSafetySeats--;
 	}
 
 protected:
 	Driver* driver = nullptr;
 	std::vector<Passenger*> passengers;
 	unsigned maxPassengers = 0;
-	unsigned childSafetySeat = 0;
+	unsigned childSafetySeats = 0;
 };
 
-class BoardTaxi : public BoardAnyCar
-{
-public:
-	BoardTaxi()
-	{
-		maxPassengers = 4;
-		passengers.reserve(maxPassengers);
-	}
-
-	~BoardTaxi() {};
-	unsigned GetChildSafetySeat()
-	{
-		return childSafetySeat;
-	}
-	void IncreaseChildSafetySeats()
-	{
-		childSafetySeat++;
-	}
-};
-
-class BoardBus : public BoardAnyCar
-{
-public:
-	BoardBus()
-	{
-		maxPassengers = 30;
-		passengers.reserve(maxPassengers);
-	}
-
-	~BoardBus() {};
-};
+//class Taxi : public Car
+//{
+//public:
+//	Taxi()
+//	{
+//		maxPassengers = 4;
+//		passengers.reserve(maxPassengers);
+//	}
+//
+//	~Taxi() {};
+//
+//};
+//
+//class Bus : public Car
+//{
+//public:
+//	Bus()
+//	{
+//		maxPassengers = 30;
+//		passengers.reserve(maxPassengers);
+//	}
+//
+//	~Bus() {};
+//};
