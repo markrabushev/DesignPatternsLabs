@@ -6,6 +6,10 @@ class Director
 private:
 	CarBuilder* builder = nullptr;
 public:
+	Director(CarBuilder& p_builder)
+	{
+		builder = &p_builder;
+	}
 	void SetBuilder(CarBuilder& p_builder)
 	{
 		builder = &p_builder;

@@ -5,12 +5,12 @@
 
 int main()
 {
-	Director dir;
 	BusBuilder bus_builder;
 	TaxiBuilder taxi_builder;
+	Director dir(bus_builder);
 	try 
 	{
-		dir.SetBuilder(bus_builder);
+		//dir.SetBuilder(bus_builder);
 		Car* Bus = dir.CreateBoard(5, 3, 0, 6);
 		Bus->info();
 	}
@@ -19,9 +19,10 @@ int main()
 		std::cout << error_message << std::endl;
 	}
 	std::cout << std::endl;
+	dir.SetBuilder(taxi_builder);
 	try 
 	{
-		dir.SetBuilder(taxi_builder);
+		//dir.SetBuilder(taxi_builder);
 		Car* Taxi = dir.CreateBoard(2, 1, 1);
 		Taxi->info();
 	}

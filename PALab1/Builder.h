@@ -37,7 +37,6 @@ public:
 		}
 	}
 	void buildSafetySeat() { car->IncreaseChildSafetySeats(); }
-	void buildPreferential() {};
 	~TaxiBuilder()
 	{
 		delete car;

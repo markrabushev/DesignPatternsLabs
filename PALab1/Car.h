@@ -81,28 +81,3 @@ protected:
 	unsigned maxPassengers = 0;
 	unsigned childSafetySeats = 0;
 };
-
-//class Taxi : public Car
-//{
-//public:
-//	Taxi()
-//	{
-//		maxPassengers = 4;
-//		passengers.reserve(maxPassengers);
-//	}
-//
-//	~Taxi() {};
-//
-//};
-//
-//class Bus : public Car
-//{
-//public:
-//	Bus()
-//	{
-//		maxPassengers = 30;
-//		passengers.reserve(maxPassengers);
-//	}
-//
-//	~Bus() {};
-//};
