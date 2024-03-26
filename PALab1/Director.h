@@ -14,6 +14,7 @@ public:
 	{
 		builder = &p_builder;
 	}
+
 	Car* CreateBoard(size_t AdultNum = 1, size_t ChildNum = 1, unsigned safetySeats = 0, size_t PreferentialNum = 0)
 	{
 		builder->createCar();
