@@ -130,12 +130,12 @@
     <ClCompile Include="PALab1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Car.h" />
-    <ClInclude Include="Builder.h" />
-    <ClInclude Include="Director.h" />
-    <ClInclude Include="Driver.h" />
-    <ClInclude Include="Passenger.h" />
-    <ClInclude Include="TransportManager.h" />
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Composite.h" />
+    <ClInclude Include="Primitive.h" />
+    <ClInclude Include="Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
