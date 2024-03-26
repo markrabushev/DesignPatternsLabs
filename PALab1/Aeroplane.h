@@ -1,25 +1,23 @@
 #pragma once
 #include "Composite.h"
 
-enum MaxNumberOfPassengers { EconomClass = 150, BusinessClass = 20, FirstClass = 10 };
+enum MaxNumberOfPassengers { EconomClassP = 150, BusinessClassP = 20, FirstClass = 10 };
 enum BagWeight { EconomClass = 20, BusinessClass = 35, General = 60, Min = 5 };
 
 class Aeroplane
 {
-	Aeroplane(unsigned p_weignt)
+public:
+	Aeroplane(const unsigned p_weignt, size_t economPass, size_t businessPass, size_t firstPass)
 	{
 		maxWeight = p_weignt;
-	}
-	Composite* CreateAeroplane(size_t economPass, size_t businessPass, size_t firstPass)
-	{
-		Composite* Aeroplane = new Composite();
+		aeroplane = new Composite();
 		for (size_t i = 0; i < 2; i++)
-			Aeroplane->addUnit(new Primitive(0));
+			aeroplane->addUnit(new Primitive(0));
 		for (size_t i = 0; i < 6; i++)
-			Aeroplane->addUnit(new Primitive(0));
-
+			aeroplane->addUnit(new Primitive(0));
+		throw "fhsjkfhdskf";
 		Composite* firstClass = new Composite();
-		for (size_t i = 0; i < firstPass; i++)	
+		for (size_t i = 0; i < firstPass; i++)
 		{
 			firstClass->addUnit(new Primitive(rand() % (BagWeight::General - BagWeight::Min) + BagWeight::Min));
 		}
@@ -33,10 +31,24 @@ class Aeroplane
 		{
 			economClass->addUnit(new Primitive(rand() % (BagWeight::General - BagWeight::Min) + BagWeight::Min));
 		}
-		Aeroplane->addUnit(firstClass);
-		Aeroplane->addUnit(businessClass);
-		Aeroplane->addUnit(economClass);
+		aeroplane->addUnit(firstClass);
+		aeroplane->addUnit(businessClass);
+		aeroplane->addUnit(economClass);
+	}
+	~Aeroplane()
+	{
+		delete aeroplane;
+		std::cout << "destr";
+	}
+	Composite* getAeroplane()
+	{
+		return aeroplane;
+	}
+	unsigned getMaxWeight()
+	{
+		return maxWeight;
 	}
 private:
 	unsigned maxWeight;
+	Composite* aeroplane;
 };
