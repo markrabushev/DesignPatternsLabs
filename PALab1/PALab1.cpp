@@ -36,6 +36,7 @@ int main()
 		std::cout << " left with " << BTaxi->GetCurrentPassengers() << " passengers" << std::endl;
 	}
 
+
 	delete TM;
 	delete BBus;
 	delete BTaxi;
