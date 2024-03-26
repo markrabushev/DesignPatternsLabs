@@ -1,5 +1,5 @@
 #pragma once
-#include "Primitive.h"
+#include "Primitives.h"
 #include <vector>
 
 
@@ -17,6 +17,10 @@ public:
 	void addUnit(Unit* u) override
 	{
 		units.push_back(u);
+	}
+	size_t getSize()
+	{
+		return units.size();
 	}
 	~Composite()
 	{
