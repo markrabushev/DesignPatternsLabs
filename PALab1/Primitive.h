@@ -16,15 +16,4 @@ private:
 	unsigned weight;
 };
 
-class Pilot : public Unit
-{
-public:
-	unsigned getWeight() const override { return 0; }
-};
-
-class Stewardess : public Unit
-{
-public:
-	unsigned getWeight() const override { return 0; }
-};
 

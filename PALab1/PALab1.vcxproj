@@ -133,6 +133,7 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aeroplane.h" />
     <ClInclude Include="Composite.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="Unit.h" />
