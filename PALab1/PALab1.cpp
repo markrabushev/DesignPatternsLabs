@@ -10,7 +10,6 @@ int main()
 	Director dir(bus_builder);
 	try 
 	{
-		//dir.SetBuilder(bus_builder);
 		Car* Bus = dir.CreateBoard(5, 3, 0, 6);
 		Bus->info();
 	}
@@ -22,7 +21,6 @@ int main()
 	dir.SetBuilder(taxi_builder);
 	try 
 	{
-		//dir.SetBuilder(taxi_builder);
 		Car* Taxi = dir.CreateBoard(2, 1, 1);
 		Taxi->info();
 	}
