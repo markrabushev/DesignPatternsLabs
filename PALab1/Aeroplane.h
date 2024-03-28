@@ -11,7 +11,7 @@ public:
 	{
 		if (economPass > MaxNumberOfPassengers::EconomClassP or businessPass > MaxNumberOfPassengers::BusinessClassP or firstPass > MaxNumberOfPassengers::FirstClass)
 		{
-			throw std::exception("ѕревышено максимальное число пассажиров");
+			throw std::exception("The maximum number of passengers has been exceeded");
 		}
 		maxWeight = p_weignt;
 		aeroplane = new Composite();
@@ -70,25 +70,13 @@ public:
 		std::cout << "Total weight: \t" << aeroplane->getWeight() << std::endl;
 		std::cout << "Business class passengers with additional baggage charges: " << amountBusiness << std::endl;
 		std::cout << "Econom class passengers with additional baggage charges: " << amountEconom << std::endl;
-		std::cout << passengersOverTheLimit <<
-			" bags with a total weight of " << weightOverTheLimit << " were removed from the flight" << std::endl;
+		if (passengersOverTheLimit)
+		{
+			std::cout << passengersOverTheLimit <<
+				" bags with a total weight of " << weightOverTheLimit << " were removed from the flight" << std::endl;
+		}
 	}
-	Composite* getAeroplane()
-	{
-		return aeroplane;
-	}
-	unsigned getMaxWeight()
-	{
-		return maxWeight;
-	}
-	unsigned getAmountEconom()
-	{
-		return amountEconom;
-	}
-	unsigned getAmountBusiness()
-	{
-		return amountBusiness;
-	}
+
 private:
 	unsigned maxWeight, weight = 0, amountEconom = 0, amountBusiness = 0, weightOverTheLimit = 0, passengersOverTheLimit = 0;
 	Composite* aeroplane;

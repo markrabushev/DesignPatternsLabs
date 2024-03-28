@@ -18,6 +18,12 @@ public:
 	{
 		units.push_back(u);
 	}
+	void removeUnit(Unit* u) override
+	{
+		auto pos = std::find(units.begin(), units.end(), u);
+		if(pos != units.end())
+			units.erase(pos);
+	}
 	size_t getSize()
 	{
 		return units.size();
