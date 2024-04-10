@@ -1,20 +1,18 @@
-﻿#include <vector>
-#include <iostream>
-#include <string>
-#include "Aeroplane.h"
+﻿#include <iostream>
+#include "Interpreter.h"
+
 
 int main()
 {
 	srand(time(0));
 	setlocale(LC_ALL, "ru");
-	try {
-		Aeroplane a(5000, 145, 15, 9);
-		a.info();
-	}
-	catch (const std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-
+	/*std::string text_spaces = "Какой-то  текст,  содержащий       множественные   пробелы";
+	std::string text = "Какой-то  текст,  содержащий       множественные   пробелы";
+	TextInterpreter* TI = new SpacesInterpreter();
+	std::cout << TI->Interpret(text);*/
+	std::string input = “This is a «sample» sentence with "double" quotes.”;
+	std::cout << "Original input: " << input << std::endl;
+	std::string converted = convertQuotationMarks(input);
+	std::cout << "Converted input: " << converted << std::endl;
 	return 0;
 }
