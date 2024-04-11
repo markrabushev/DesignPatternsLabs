@@ -130,8 +130,8 @@
     <ClCompile Include="PALab1.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Context.h" />
-    <ClInclude Include="Interpreter.h" />
+    <ClInclude Include="Observer.h" />
+    <ClInclude Include="Subject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
