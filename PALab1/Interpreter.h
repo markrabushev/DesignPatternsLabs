@@ -17,7 +17,7 @@ public:
 	SpacesInterpreter() {};
 	void Interpret(Context& context)
 	{
-		context.SetText(std::regex_replace(context.GetText(), std::regex("\\s+"), " "));
+		context.SetText(std::regex_replace(context.GetText(), std::regex(" {2,}"), " "));
 	}
 };
 
@@ -27,7 +27,8 @@ public:
 	DashInterpreter() {};
 	void Interpret(Context& context)
 	{
-		context.SetText(std::regex_replace(context.GetText(), std::regex("-"), "–"));
+		std::string temp = std::regex_replace(context.GetText(), std::regex("\\s*-\\s*"), "-");
+		context.SetText(std::regex_replace(temp, std::regex("\\s*—\\s*"), " — "));
 	}
 };
 
@@ -37,8 +38,7 @@ public:
 	QuotationMarksInterpreter() {};
 	void Interpret(Context& context)
 	{
-		std::string temp = std::regex_replace(context.GetText(), std::regex("“"), "«");
-		context.SetText(std::regex_replace(temp, std::regex("”"), "»"));
+		context.SetText(std::regex_replace(context.GetText(), std::regex("(\"|«)\\s*(.+?)\\s*(\"|»)"), "«$2»"));
 	}
 };
 
@@ -48,7 +48,7 @@ public:
 	TabsInterpreter() {};
 	void Interpret(Context& context)
 	{
-		context.SetText(std::regex_replace(context.GetText(), std::regex("\t{2,}"), "\t"));
+		context.SetText(std::regex_replace(context.GetText(), std::regex("( *\t{2,} *)|^ +"), "\t"));
 	}
 };
 
@@ -58,11 +58,10 @@ public:
 	BracketInterpreter() {};
 	void Interpret(Context& context)
 	{
-		std::string temp = std::regex_replace(context.GetText(), std::regex("\\(\\s+"), "(");
-		temp = std::regex_replace(context.GetText(), std::regex("\\s+\\)"), ")");
-		temp = std::regex_replace(context.GetText(), std::regex("\\s+,"), ",");
-		temp = std::regex_replace(context.GetText(), std::regex("\\s+\\."), ".");
-		context.SetText(temp);
+		context.SetText(std::regex_replace(context.GetText(), std::regex("\\(\\s+"), "("));
+		context.SetText(std::regex_replace(context.GetText(), std::regex("\\s+\\)"), ")"));
+		context.SetText(std::regex_replace(context.GetText(), std::regex("\\s+,"), ","));
+		context.SetText(std::regex_replace(context.GetText(), std::regex("\\s+\\."), "."));
 	}
 };
 
