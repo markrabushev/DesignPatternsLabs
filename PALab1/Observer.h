@@ -1,20 +1,11 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "Teacher.h"
 
 class Observer 
 {
 public:
-    virtual void Update(const std::string& discipline, const std::string& group, const bool& status) = 0;
+    virtual void Update(const std::vector<Teacher>& teachers) = 0;
 };
 
-
-class DeanOffice : public Observer 
-{
-public:
-    void Update(const std::string& discipline, const std::string& group, const bool& status) override {
-        if (!status) {
-            std::cout << "Деканат уведомляет кафедру: Преподаватель дисциплины " << discipline << " у группы " << group << " вовремя не создал текущую успеваемость!" << std::endl;
-        }
-    }
-};

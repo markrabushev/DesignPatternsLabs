@@ -1,19 +1,11 @@
 ﻿#include <iostream>
-#include "Subject.h"
+#include "Deanery.h"
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	Teacher teacher;
-	DeanOffice deanOffice;
-
-
-	teacher.Attach(&deanOffice);
-
-
-	teacher.createProgress("Математический анализ", "ПИН-14", 1);
-
-	teacher.createProgress("Алгебра и геометрия", "ПИН-14", 0);
+	Deanery* d = new Deanery();
+	Teacher t1("first");
 
 	return 0;
 }
