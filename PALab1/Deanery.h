@@ -34,12 +34,10 @@ public:
 					teachers.push_back(t);
 				}
 			}
-			x.first->Update(teachers);
+			if(!teachers.empty()) x.first->Update(teachers);
 		}
 	}
-	//void CheckReports();
 	
 private:
-	//std::vector<Teacher> teachers;
 	std::map<Observer*, std::vector<Teacher*>> observers;
 };

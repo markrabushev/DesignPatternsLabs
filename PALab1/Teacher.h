@@ -1,20 +1,21 @@
 #pragma once
-#include "Subject.h"
-#include "Observer.h"
 
 
 class Teacher
 {
 public:
-    Teacher(const std::string& _name, Observer* d, Subject* s)
+    Teacher(const std::string& _name)
     {
         name = _name;
-        s->Attach(d, this);
         is_create_report = false;
     }
     void CreateReport()
     {
         is_create_report = true;
+    }
+    void ResetReport()
+    {
+        is_create_report = false;
     }
     bool IsCreateReport()
     {
