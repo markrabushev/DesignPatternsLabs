@@ -1,19 +1,13 @@
 #pragma once
 #include "Observer.h"
-#include <vector>
+#include "Teacher.h"
 
 class Subject 
 {
-private:
-    std::vector<Observer*> observers;
 public:
-    virtual void Attach(Observer* observer) {
-        observers.push_back(observer);
-    }
+    virtual void Attach(Observer* observer, Teacher* teacher) = 0;
 
-    virtual void Detach(Observer* observer) {
-        observers.erase(std::remove(observers.begin(), observers.end(), observer), observers.end());
-    }
+    virtual void Detach(Observer* observer) = 0;
 
     virtual void Notify() = 0;
 };
