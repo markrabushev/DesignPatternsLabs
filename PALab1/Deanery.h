@@ -37,7 +37,13 @@ public:
 			if(!teachers.empty()) x.first->Update(teachers);
 		}
 	}
-	
+	void CheckPerformance()
+	{
+		std::cout << "--------------------------------------------" << std::endl;
+		std::cout << " онец недели, деканат провер€ет успеваемость" << std::endl;
+		Notify();
+		std::cout << "--------------------------------------------" << std::endl;
+	}
 private:
 	std::map<Observer*, std::vector<Teacher*>> observers;
 };
